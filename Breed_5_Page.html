@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+          
+    <link rel="stylesheet" type="text/css" href="Vendors/CSS/normalize.css">
+     <link rel="stylesheet" type="text/css" href="Vendors/CSS/038%20Grid.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/quaries.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/style_breed.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+          height: 400px;  /* The height is 400 pixels */
+          width: 100%;  /* The width is the width of the web page */
+         }
+      </style>
+
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                google.charts.load('current', {'packages':['gauge','bar']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+
+
+                    firebase.database().ref('DHT').on("value", function(snapshot) {
+                    
+                        if(snapshot) {
+                            var DHT = snapshot.val();
+                            var t = DHT.Temperature;
+                            var h = DHT.Humidity;
+                            console.log(t);
+                            console.log(h);
+                            var thi = (0.8*t) + ((h/100)*(t-14.4))+ 46.4;
+                            thi = thi.toFixed(2);
+
+                            var data = google.visualization.arrayToDataTable([
+                                ['Label', 'Value'],
+                                ['Temperature', t],
+                                ['Humidity', h],
+                                ['THI', thi]
+                            ]);
+
+                            var options = {
+                                width: 600, height: 175,
+                                redFrom: 80, redTo: 100,
+                                yellowFrom:70, yellowTo: 80,
+                                minorTicks: 2
+                            };
+
+
+
+
+                            var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+                            chart.draw(data, options);
+
+                            setInterval(function() {
+                                data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+                                chart.draw(data, options);
+                            }, 13000);
+                            setInterval(function() {
+                                data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+                                chart.draw(data, options);
+                            }, 5000);
+                            setInterval(function() {
+                                data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+                                chart.draw(data, options);
+                            }, 26000);
+                        }
+                    });
+
+                    
+                }
+                
+                </script>
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                            <script type="text/javascript">
+                              google.charts.load('current', {'packages':['bar']});
+                              google.charts.setOnLoadCallback(drawChart);
+                        
+                              function drawChart() {
+                                var data = google.visualization.arrayToDataTable([
+                                  ['Parameters', 'Temperature', 'Humidity', 'THI'],
+                                  ['Morning', 19, 48, 65],
+                                  ['Afternoon', 30, 52, 68],
+                                  ['Evening', 21, 45, 62],
+                                ]);
+                        
+                                var options = {
+                                  chart: {
+                                    title: 'Livestock Monitoring System',
+                                    subtitle: 'Temperature, Humidity and Temperature and Humidity Index',
+                                  },
+                                  bars: 'vertical' // Required for Material Bar Charts.
+                                };
+                        
+                                var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                        
+                                chart.draw(data, google.charts.Bar.convertOptions(options));
+                              }
+                            </script>
+
+        <title>Sahiwal</title>
+</head>
+    
+    <body>
+    
+    <header>
+        
+        <div class="Header">
+            <a class="btnl btn-full" href="C:\Users\Admin\Documents\Livestock\Index.html">Home Page</a>
+            <a class="btnr btn-full " href="C:\Users\Admin\Documents\Livestock\homepage.html">Select Breed</a>
+            <h2>Livestock Monitoring System</h2>   
+        </div>
+    </header>
+        
+    <h3>Sahiwal</h3><br>
+    <p class = info>
+        ahiwal is considered to be one of the best milch cattle breed of India. The breed derives its name from Sahiwal area in Montgomery district of Punjab in Pakistan. These animals are also known as “Lambi Bar”, “Lola”, “Montgomery”, “Multani” and “Teli”. The animals are very good for specialized dairy purpose.  The breeding tract of the breed is Ferozpur and Amritsar districts of Punjab and Sri Ganganagar district of Rajasthan. Good herds of pure Sahiwal cattle are available around Fazilka and Abohar towns of Ferozepur district in Punjab. The cows are brownish red in colour; shades may vary from a mahogany red brown to more greyish red.     </p>
+    <table class = "columns">
+        <tr>
+            <td><div id="chart_div" class = "chart"></div></td>
+            <td><div id="barchart_material" class = "bar"></div></td>
+        </tr>
+    </table>
+    <div class="First_row">
+        <div class="head_box">
+         <h4>Updates</h4>
+        </div>
+        <div class="content_box">
+            <p>THI Value :</p><span id="thiValue">Loading...</span><br><br><br>
+            <p>Status :</p><span id='condition'> status of cattle with reference to THI</span></b>
+        </div>
+        <div class="head_box">
+            <h4>Cow Information</h4>
+        </div>
+        <div class="content_box">
+            <p>
+                <p>Your Cow's Name : </p><span id="cname" class="valu"></span><br>
+                <p>Your Cow's Age :</p><span id="cage" class="valu"> months</span><br>
+                <p>She last gave birth :</p><span id="clgb" class="valu"></span> months ago<br>
+                <p>Age while calving : </p><span id="ageCalv5" class="valu"></span> months<br>
+                <p> Calving Interval : </p><span id="calvInter5" class="valu"></span> months<br>
+                <p>lactation Period : </p><span id="lactPeriod5" class="valu"></span> days<br>
+                <p>Weight(kg) :</p><span id="weight5" class="valu"></span> kg
+            </p>
+        </div>
+    </div>
+    <div class="Second_row"> 
+            <div class="head_box_r">
+            <h4>Food</h4>
+            </div>
+            <div class="content_box_r">
+            <h4> Grain : </h4> <p> <p>2.7 kg pounds</p><br>
+               <h4> Hay : </h4> <p>4.08 kg </p><br>
+                <h4>Protein supplement : </h4> <p>0.23 kg</p><br>
+                <h4>Mineral block : </h4> <p>as much as needed</p><br>
+               <h4> Water : </h4>  <p>20-24 gal per day</p>
+            </div> 
+            <div class="head_box_r">
+            <h4>Milk Production Statistics</h4>
+            </div>
+            <div class="content_box_r_2">
+                 
+                 <p>Milk Fat : </p><span id="milkFat5"></span>%<br>
+                 <p>Milk Yield per day : </p><span id="myDay5"></span> kg<br>
+                 <p>Milk Yield per Lactation : </p><span id="myLactation5"></span> kg<br>
+                 <p>Milk Yield per month : </p><span id="myMonth5"></span> kg<br>
+                 <p>Milk Yield per year : </p><span id="myYear5"></span> kg<br>
+                 <p>Number of milking per day : </p><span id="nmpd5"></span> times<br>
+                 <p>Status : </p><span id="condition2"></span><br>
+            </div>  
+     </div>
+         <div class="Map_box">
+            <div id="map"></div>
+            </p>
+            </div>
+
+
+        
+        <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyBeeWcGeSlkQEcjKOFpPnVzn6bbYFsOXyc",
+                authDomain: "livestock-monitoring-system.firebaseapp.com",
+                databaseURL: "https://livestock-monitoring-system.firebaseio.com",
+                projectId: "livestock-monitoring-system",
+                storageBucket: "livestock-monitoring-system.appspot.com",
+                messagingSenderId: "31103750254",
+                appId: "1:31103750254:web:e12b16e888c308cef1567f",
+                measurementId: "G-3E7V8NDEWF"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+
+
+                firebase.database().ref('GPS').once("value", snapshot => {
+                    if(snapshot && snapshot.val()) {
+
+                        let GPS = snapshot.val();
+                        
+                        // The location of the cattle
+                        var uluru = {lat: parseFloat(GPS.Latitude), lng: parseFloat(GPS.Longitude)};
+                        // The map, centered at the cattle
+                        var map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 4, center: uluru});
+                        // The marker, positioned at the cattle's location
+                        var marker = new google.maps.Marker({position: uluru, map: map});
+                    }
+                });
+
+            }
+            </script>
+            <!--Load the API from the specified URL
+            * The async attribute allows the browser to render the page while the API loads
+            * The key parameter will contain your own API key (which is not needed for this tutorial)
+            * The callback parameter executes the initMap() function
+            -->
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfeg7V_b7n46BkgKO6dXscBAujif1mrbw&callback=initMap">
+            </script>
+        
+        <script src="./app.js"></script>
+    </body>
+
+</html>
+
+<!--AIzaSyCfeg7V_b7n46BkgKO6dXscBAujif1mrbw
+AIzaSyC_DSnUPH4VHzO0Wv3pdRFOvLQ-zdTHRYQ
+-->
