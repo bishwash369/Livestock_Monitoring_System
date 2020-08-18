@@ -1,0 +1,205 @@
+/* Green Color
+    #27ae60
+*/ 
+/* ----------------------------------------------------- */
+                    /* BASIC SET UP */
+/* ----------------------------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    
+    background: #fff;
+    color: #555;
+    font-family: 'Montserrat', sans-serif , 'Arial';
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+/* ----------------------------------------------------- */
+                    /* REUSABLE COMPONENTS */
+/* ----------------------------------------------------- */
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0;
+}
+.box {
+    padding : 1%;
+    padding-left: 9%;
+}
+
+
+
+
+/* ----------------------------------------------------- */
+                    /* HEADING */
+/* ----------------------------------------------------- */
+
+h1,h2,h3
+{
+    text-transform: uppercase;
+    
+}
+
+h1{
+    margin: 0;
+    color: #fff;
+    font-size: 250%;
+    word-spacing: 3px;
+    text-align: center;
+    letter-spacing: 1px;
+    
+ 
+}
+
+h2{
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #27ae60;
+    content: " ";
+    width: 250px;
+    margin:  0 auto;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+
+/* ----------------------------------------------------- */
+                    /* PARAGRAPHS */
+/* ----------------------------------------------------- */
+
+.long-copy {
+    line-height: 155%;
+    width: 0%;
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+
+
+/* ----------------------------------------------------- */
+                    /* ICON */
+/* ----------------------------------------------------- */
+
+.icon_big {
+    font-size: 350%;
+    display: block;
+    color: #27ae60;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    
+}
+
+
+
+
+/* ----------------------------------------------------- */
+                    /* BUTTONS */
+/* ----------------------------------------------------- */
+
+.btn:link , .btn:visited
+{
+    display: inline-block;
+    padding: 20px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    margin-left: 480px;
+    margin-top: 50px;
+    border-radius: 200px;
+    color: #fff;
+    transition: background-color 0.2s , border 0.2s , color 0.2s;
+}
+
+.btn-full:link , .btn-full:visited
+{
+    background-color: #27ae60;
+    border: 1px solid #27ae60;
+}
+
+.btn:hover , .btn:active
+{
+    background-color: #1e8449;
+}
+
+
+/* ----------------------------------------------------- */
+                    /* HEADER */
+/* ----------------------------------------------------- */
+
+header {
+    background-image:linear-gradient(rgba(25, 25, 25, 0.74),rgba(25, 25, 25, 0.74)),url(Img/Indian_Cow.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.hero-text-box{
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.main-nav li {
+    
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.main-nav li a:link , .main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.main-nav li a:hover , .main-nav li a:active {
+    border-bottom: 2px solid #27ae60;
+}
+
+.table {
+    width: 90%; 
+    height: 70px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 100px ;
+    margin-right: 100px;
+}
+
+
+

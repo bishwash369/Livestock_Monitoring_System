@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+          
+    <link rel="stylesheet" type="text/css" href="Vendors/CSS/normalize.css">
+     <link rel="stylesheet" type="text/css" href="Vendors/CSS/038%20Grid.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/quaries.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+    <title>Livestock Monitoring System</title>
+
+
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+
+            // Load Charts and the corechart and barchart packages.
+            google.charts.load('current', {'packages':['corechart']});
+
+            // Draw the pie chart and bar chart when Charts is loaded.
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Milk Yield in kg');
+                data.addColumn('number', 'Milk Yield in kg');
+                data.addRows([
+                ['Ongole', 3100],
+                ['Gir', 2110],
+                ['Rathi', 1560],
+                ['Red Sindhi', 1840],
+                ['Sahiwal', 2325]
+                ]);
+
+                var piechart_options = {title:'Piechart - Cow Milk Yield Per Lactation (kg)',
+                            width:600,
+                            height:400};
+                var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+                piechart.draw(data, piechart_options);
+
+                var barchart_options = {title:'Barchart- Cow Milk Yield Per Lactation (kg)',
+                            width:600,
+                            height:400,
+                            legend: 'none'};
+                var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+                barchart.draw(data, barchart_options);
+            }
+            </script>
+    
+    
+</head>
+    
+<body>
+    
+    <header>
+    <div class="hero-text-box">
+        <h1>Livestock Monitoring System</h1>
+        <a class="btn btn-full" href="C:\Users\Admin\Documents\Livestock\homepage.html">Get Started</a>
+    </div>
+
+    </header>
+    
+    <section class="section-feature">
+        <div class="row">
+            <h2>Livestock Monitoring System</h2>
+            <!--Table and divs that hold the pie charts-->
+            <table class="table">
+                <tr>
+                <td><div id="piechart_div" ></div></td>
+                <td><div id="barchart_div" ></div></td>
+                </tr>
+            </table>
+        <div class="row">
+            <div class="col span-1-of-3 box ">
+                <ion-icon class="icon_big" name="pin"></ion-icon>
+            <h3>Tracking Livestock</h3>
+                <p>Livestock Monitoring System is a prototype device designed to monitor livestock animals by tracking their location and monitoring their health with constraints such as body temperature and humidity</p>
+            
+            
+            
+            </div>
+              <div class="col span-1-of-3 box">
+                  <ion-icon class="icon_big" name="cash"></ion-icon>
+            <h3>Cost-Efficient</h3>
+                <p> This system provides millions of a cost efficient system which prevents small scale poultry and livestock farmers from spending thousands of dollars on a monitoring system
+                  </p>
+            
+            
+            
+            </div>
+              <div class="col span-1-of-3 box">
+                  <ion-icon class="icon_big" name="construct"></ion-icon>
+            <h3>IOT project</h3>
+                <p> It is an IOT project where modules such as GPS (Neo6m), Temperature and Humidity Sensor (DHT11) and Wifi Module(ESP8266) will be used to send information of livestock directly to user’s electronic device</p>
+            
+            
+            </div>
+           </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="Resources/Java%2520Script/script.js"></script>
+    <sc
+</body>
+
+
+
+
+</html>

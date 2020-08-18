@@ -1,0 +1,15 @@
+
+/*Small Phone : from 0 to 480px */
+
+@media only screen and (max-width: 480px)
+{
+    .hero-text-box{
+    width: 100%;   
+}
+    
+    section { padding: 25px 0;}
+    
+   .btn:link , .btn:visited {
+        margin-left: 135px;
+    }
+}

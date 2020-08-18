@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <link rel="stylesheet" type="text/css" href="Vendors/CSS/normalize.css">
+     <link rel="stylesheet" type="text/css" href="Vendors/CSS/038%20Grid.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/style_h.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Home Page</title>
+   <script>
+$(document).ready(function(){
+    $('input:checkbox').click(function() {
+        $('input:checkbox').not(this).prop('checked', false);
+    });
+});
+</script>
+
+</head>
+    <body>
+        <header>
+            
+            <h1>Livestock Monitoring System</h1>
+            
+        </header>
+      
+        
+        <section class="section-breeds">
+              
+        <section class="section-photo">
+            <ul class="Breed-selection">
+                <li>
+                    <figure class="cow-photo">
+                        <img src="Resources/Image/1.jpg" alt="Kangayam">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="cow-photo">
+                        <img src="Resources/Image/2.jpg" alt="Kankrej">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="cow-photo">
+                        <img src="Resources/Image/3.jpg" alt="Kenkathal">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="cow-photo">
+                        <img src="Resources/Image/4.jpg" alt="Kherigarh">
+                    </figure>
+                </li>
+                <li>
+                    <figure class="cow-photo">
+                        <img src="Resources/Image/5.jpg" alt="Rathi">
+                    </figure>
+                </li>
+            </ul>
+        
+        
+        </section>
+                <h3>Select Breed</h3>
+    <div class="Check">       
+            <form>
+                <div class="col span-1-of-5 ">
+  <input type="checkbox"  id="breed1" >
+  <label > Ongole</label>
+                </div>
+                <div class="col span-1-of-5">
+  <input type="checkbox"  id="breed2">
+  <label > Gir</label>
+                    </div>
+                <div class="col span-1-of-5">
+  <input type="checkbox"  id="breed3" >
+  <label > Rathi</label>
+                    </div>
+                <div class="col span-1-of-5">
+<input type="checkbox"  id="breed4" >
+  <label > Red Sindhi</label>
+                    </div>
+                <div class="col span-1-of-5">
+<input type="checkbox"  id="breed5" >
+  <label > Sahiwal</label>
+                    </div>
+                    
+                
+                <h2>Cow's Information</h2>
+    <input type="text" id="cname" name="cowname" placeholder="Name of the Cow (Nickname)">
+    <input type="number" id="age" name="cowage" placeholder="Age of the cow (in months)"><br>
+    <input type="number" id="lgb" name="lastgivwb" placeholder="When did the cow last give birth (in months)                [Example. 3 months ago]">
+
+  
+    <input type="button"  onClick ="CowInfo()" href="file:///C:/Users/Admin/Documents/Livestock/Breed_1_Page.html" value="SUBMIT">
+</form>
+        </div>
+
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBeeWcGeSlkQEcjKOFpPnVzn6bbYFsOXyc",
+            authDomain: "livestock-monitoring-system.firebaseapp.com",
+            databaseURL: "https://livestock-monitoring-system.firebaseio.com",
+            projectId: "livestock-monitoring-system",
+            storageBucket: "livestock-monitoring-system.appspot.com",
+            messagingSenderId: "31103750254",
+            appId: "1:31103750254:web:e12b16e888c308cef1567f",
+            measurementId: "G-3E7V8NDEWF"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>     
+    <script>
+        function CowInfo() {
+            let cowName = document.getElementById('cname').value;
+            let age = document.getElementById('age').value;
+            let lgb = document.getElementById('lgb').value;
+            console.log(cowName, age, lgb);
+            firebase.database().ref('CowInfo').push({
+                age: parseInt(age),
+                cowName: cowName,
+                lgb: parseInt(lgb)
+            });
+
+            if(document.getElementById('breed1').checked) 
+                window.location.href="./Breed_1_Page.html";
+            
+            if(document.getElementById('breed2').checked)
+                window.location.href="./Breed_2_Page.html";
+
+            if(document.getElementById('breed3').checked)
+                window.location.href="./Breed_3_Page.html";
+
+            if(document.getElementById('breed4').checked)
+                window.location.href="./Breed_4_Page.html";
+
+            if(document.getElementById('breed5').checked)
+                window.location.href="./Breed_5_Page.html";
+
+
+        }
+        
+    </script>
+    </body>
+    
+</html>
